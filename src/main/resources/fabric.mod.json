@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "vampirehunters",
+	"version": "${version}",
+	"name": "Vampire Hunters",
+	"description": "Fight and kill dracula",
+	"authors": [
+		"loamlover"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/vampirehunters/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.efs.vampirehunters.VampireHunters"
+		],
+		"client": [
+			"com.efs.vampirehunters.VampireHuntersClient"
+		]
+	},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.11.3",
+		"fabric": "*",
+		"minecraft": "1.17.x",
+		"java": ">=16"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
