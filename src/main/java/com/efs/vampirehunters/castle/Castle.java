@@ -1,7 +1,5 @@
 package com.efs.vampirehunters.castle;
 
-import java.util.Random;
-
 import com.mojang.serialization.Codec;
 
 import net.minecraft.structure.StructureManager;
@@ -34,7 +32,7 @@ public class Castle extends StructureFeature<DefaultFeatureConfig> {
 		public void init(DynamicRegistryManager dynamicRegistryManager, ChunkGenerator chunkGenerator,
 				StructureManager structureManager, ChunkPos chunkPos, Biome biome, DefaultFeatureConfig FeatureConfig,
 				HeightLimitView heightLimitView) {
-			BlockRotation blockRotation = BlockRotation.random(this.random);
+			BlockRotation blockRotation = BlockRotation.NONE;
 			int i = chunkGenerator.getHeight(chunkPos.getStartX(), chunkPos.getStartZ(), Heightmap.Type.WORLD_SURFACE,
 					heightLimitView);
 			BlockPos blockPos = new BlockPos(chunkPos.getStartX(), i, chunkPos.getStartZ());

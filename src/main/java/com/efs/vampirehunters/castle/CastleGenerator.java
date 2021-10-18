@@ -8,7 +8,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.structure.SimpleStructurePiece;
 import net.minecraft.structure.StructureManager;
-import net.minecraft.structure.StructurePieceType;
 import net.minecraft.structure.StructurePiecesHolder;
 import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
@@ -31,13 +30,13 @@ public class CastleGenerator {
 	public static void addParts(StructureManager structureManager, BlockPos pos, BlockRotation rotation,
 			StructurePiecesHolder structurePiecesHolder, Random random, DefaultFeatureConfig config) {
 		structurePiecesHolder
-				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle1"), pos, rotation, false));
+				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle1"), new BlockPos(pos.getX(), pos.getY(), pos.getZ()-27), rotation, false));
 		structurePiecesHolder
-				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle2"), pos, rotation, false));
+				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle2"), new BlockPos(pos.getX()-32, pos.getY(), pos.getZ()-27), rotation, false));
 		structurePiecesHolder
-				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle3"), pos, rotation, false));
+				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle3"), new BlockPos(pos.getX()-32, pos.getY(), pos.getZ()), rotation, false));
 		structurePiecesHolder
-				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle4"), pos, rotation, false));
+				.addPiece(new CastleGenerator.Piece(structureManager, new Identifier("vampirehunters", "castle/draculas_castle4"), new BlockPos(pos.getX(), pos.getY(), pos.getZ()), rotation, false));
 	}
 
 	public static class Piece extends SimpleStructurePiece {

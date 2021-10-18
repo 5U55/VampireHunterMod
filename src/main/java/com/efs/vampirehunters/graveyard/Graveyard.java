@@ -35,7 +35,7 @@ public class Graveyard extends StructureFeature<DefaultFeatureConfig> {
 			BlockRotation blockRotation = BlockRotation.random(this.random);
 			int i = chunkGenerator.getHeight(chunkPos.getStartX(), chunkPos.getStartZ(), Heightmap.Type.WORLD_SURFACE,
 					heightLimitView);
-			BlockPos blockPos = new BlockPos(chunkPos.getStartX(), i, chunkPos.getStartZ());
+			BlockPos blockPos = new BlockPos(chunkPos.getStartX(), i-2, chunkPos.getStartZ());
 			GraveyardGenerator.addParts(structureManager, blockPos, blockRotation, this, this.random, FeatureConfig);
 		}
 	}

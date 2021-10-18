@@ -8,7 +8,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.structure.SimpleStructurePiece;
 import net.minecraft.structure.StructureManager;
-import net.minecraft.structure.StructurePieceType;
 import net.minecraft.structure.StructurePiecesHolder;
 import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
@@ -44,7 +43,7 @@ public class GraveyardGenerator {
 				return createPlacementData(BlockRotation.valueOf(nbt.getString("Rot")));
 			});
 		}
-
+	
 		protected void writeNbt(ServerWorld world, NbtCompound nbt) {
 			super.writeNbt(world, nbt);
 			nbt.putString("Rot", this.placementData.getRotation().name());

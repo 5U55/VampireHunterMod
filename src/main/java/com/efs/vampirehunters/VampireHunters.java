@@ -27,6 +27,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
@@ -47,7 +48,7 @@ public class VampireHunters implements ModInitializer {
 
 	public static final VampireBlock VAMPIRE_SPAWN = new VampireBlock(
 			FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final GraveBlock GRAVESTONE = new GraveBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f));
+//	public static final GraveBlock GRAVESTONE = new GraveBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f));
 
 	public static final StructurePieceType CASTLE_PIECE = CastleGenerator.Piece::new;
 	private static final StructureFeature<DefaultFeatureConfig> CASTLE_STRUCTURE = new Castle(
@@ -73,20 +74,20 @@ public class VampireHunters implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("vampirehunters", "vampire_block"),
 				new BlockItem(VAMPIRE_SPAWN, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
-		Registry.register(Registry.BLOCK, new Identifier("vampirehunters", "graves"), GRAVESTONE);
-		Registry.register(Registry.ITEM, new Identifier("vampirehunters", "graves"),
-				new BlockItem(GRAVESTONE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
+	//	Registry.register(Registry.BLOCK, new Identifier("vampirehunters", "graves"), GRAVESTONE);
+	//	Registry.register(Registry.ITEM, new Identifier("vampirehunters", "graves"),
+	//			new BlockItem(GRAVESTONE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
 		RegistryKey<ConfiguredStructureFeature<?, ?>> graveyardConfigured = RegistryKey
 				.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY, new Identifier("vampirehunters", "graveyard"));
 		BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE,
 				new Identifier("vampirehunters", "graveyard"), GRAVEYARD_CONFIGURED);
-		BiomeModifications.addStructure(BiomeSelectors.foundInOverworld(), graveyardConfigured);
+		BiomeModifications.addStructure(BiomeSelectors.categories(Category.FOREST, Category.EXTREME_HILLS, Category.JUNGLE, Category.PLAINS, Category.SAVANNA, Category.TAIGA, Category.SWAMP), graveyardConfigured);
 
 		RegistryKey<ConfiguredStructureFeature<?, ?>> castleConfigured = RegistryKey
 				.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY, new Identifier("vampirehunters", "dracula_castle"));
 		BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE,
 				new Identifier("vampirehunters", "dracula_castle"), CASTLE_CONFIGURED);
-		BiomeModifications.addStructure(BiomeSelectors.foundInOverworld(), castleConfigured);
+		BiomeModifications.addStructure(BiomeSelectors.categories(Category.FOREST, Category.EXTREME_HILLS, Category.JUNGLE, Category.PLAINS, Category.SAVANNA, Category.TAIGA, Category.SWAMP), castleConfigured);
 	}
 }
