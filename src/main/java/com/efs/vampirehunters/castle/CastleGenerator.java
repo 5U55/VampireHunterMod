@@ -3,7 +3,14 @@ package com.efs.vampirehunters.castle;
 import java.util.Random;
 
 import com.efs.vampirehunters.VampireHunters;
+import com.efs.vampirehunters.bossmob.VampireEntity;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityData;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.mob.IllagerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.structure.SimpleStructurePiece;
@@ -65,8 +72,13 @@ public class CastleGenerator {
 		}
 
 		@Override
-		protected void handleMetadata(String metadata, BlockPos pos, ServerWorldAccess world, Random random,
-				BlockBox boundingBox) {
-		}
+	      protected void handleMetadata(String metadata, BlockPos pos, ServerWorldAccess world, Random random, BlockBox boundingBox) {
+	            VampireEntity vamp;
+	            vamp = (VampireEntity)VampireHunters.VAMPIRE.create(world.toServerWorld());
+	               vamp.setPersistent();
+	               vamp.refreshPositionAndAngles(pos, 0.0F, 0.0F);
+	               vamp.initialize(world, world.getLocalDifficulty(vamp.getBlockPos()), SpawnReason.STRUCTURE, (EntityData)null, (NbtCompound)null);
+	            world.spawnEntityAndPassengers(vamp);
+	            world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_LISTENERS);
+		}}
 	}
-}
